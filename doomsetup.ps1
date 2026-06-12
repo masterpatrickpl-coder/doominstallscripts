@@ -3,6 +3,7 @@ Unregister-ScheduledTask -TaskName "doomsetup" -Confirm:$false
 
 $pathofscript = "c:\doomsetupcontinue.sh"
 
+#do some stuff
 $shContent = @'
 #!/bin/bash
 apt update && apt upgrade -y
