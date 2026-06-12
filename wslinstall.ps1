@@ -1,5 +1,5 @@
 Write-host "this will restart you machine, make sure to save all your work before proceeding, you have 60 seconds" -ForegroundColor Red  
-startsleep -seconds 60
+Start-Sleep -seconds 60
 
 winget install --id Git.Git -e --source winget --accept-package-agreements --accept-source-agreements
 
