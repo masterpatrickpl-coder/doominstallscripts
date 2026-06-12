@@ -1,14 +1,12 @@
 Unregister-ScheduledTask -TaskName "doomsetup" -Confirm:$false
 #remove task
 
-$pathofscript = "c:\doomsetupcontinue.sh"
+$pathofscript = "$env:TEMP\doomsetupcontinue.sh"
 
-start-sleep -seconds 3
+Start-Sleep -Seconds 3
+Write-Host "building doom, this will take a while" -ForegroundColor Yellow
+Start-Sleep -Seconds 5
 
-write-host "building doom, this will take a while" -ForegroundColor Yellow
-start-sleep -seconds 5
-
-#do some stuff
 $shContent = @'
 #!/bin/bash
 apt update && apt upgrade -y
@@ -20,7 +18,7 @@ dpkg --add-architecture i386
 apt update
 apt install -y gcc-multilib libc6-dev-i386 libx11-dev:i386 libxext-dev:i386 xserver-xephyr
 sed -i '1s/^/#include <errno.h>\n/' i_sound.c
-sed -i 's/CFLAGS=-g -Wall -DNORMALUNIX -DLINUX # -DUSEASM/CFLAGS=-g -Wall -DNORMALUNIX -DLINUX -m32 -Wno-implicit-function-declaration -Wno-implicit-int # -DUSEASM/' Makefile
+sed -i 's/CFLAGS=-g -Wall -DNORMALUNIX -DLINUX # -DUSEASM/CFLAGS=-g -Wall -DNORMALUNIX -DLINUX -m32 -std=c99 -Wno-implicit-function-declaration -Wno-implicit-int # -DUSEASM/' Makefile
 sed -i 's|$(CC) $(CFLAGS) $(LDFLAGS)|$(CC) -m32 $(CFLAGS) $(LDFLAGS)|' Makefile
 make
 apt install doom-wad-shareware -y
@@ -29,9 +27,13 @@ Xephyr :2 -ac -screen 640x480x8 &
 sleep 2
 DISPLAY=:2 ./linux/linuxxdoom -nosound
 '@
+
 $bytes = [System.Text.Encoding]::UTF8.GetBytes($shContent.Replace("`r`n", "`n"))
 [System.IO.File]::WriteAllBytes($pathofscript, $bytes)
 
-wsl -d Ubuntu -u root bash /mnt/c/doomsetupcontinue.sh
-start-sleep -seconds 3
-write-host "done???" -ForegroundColor Green
+$wslPath = wsl wslpath -u "$pathofscript"
+wsl -d Ubuntu -u root bash $wslPath
+
+Remove-Item $pathofscript
+Start-Sleep -Seconds 3
+Write-Host "done???" -ForegroundColor Green
