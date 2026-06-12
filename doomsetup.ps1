@@ -31,7 +31,8 @@ DISPLAY=:2 ./linux/linuxxdoom -nosound
 $bytes = [System.Text.Encoding]::UTF8.GetBytes($shContent.Replace("`r`n", "`n"))
 [System.IO.File]::WriteAllBytes($pathofscript, $bytes)
 
-$wslPath = wsl wslpath -u "$pathofscript"
+$wslPath = "/mnt/" + ($pathofscript -replace "\\", "/" -replace ":", "").ToLower()
+
 wsl -d Ubuntu -u root bash $wslPath
 
 Remove-Item $pathofscript
