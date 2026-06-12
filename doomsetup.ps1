@@ -3,6 +3,11 @@ Unregister-ScheduledTask -TaskName "doomsetup" -Confirm:$false
 
 $pathofscript = "c:\doomsetupcontinue.sh"
 
+start-sleep -seconds 3
+
+write-host "building doom, this will take a while" -ForegroundColor Yellow
+start-sleep -seconds 5
+
 #do some stuff
 $shContent = @'
 #!/bin/bash
@@ -28,6 +33,5 @@ $bytes = [System.Text.Encoding]::UTF8.GetBytes($shContent.Replace("`r`n", "`n"))
 [System.IO.File]::WriteAllBytes($pathofscript, $bytes)
 
 wsl -d Ubuntu -u root bash /mnt/c/doomsetupcontinue.sh
-
+start-sleep -seconds 3
 write-host "done???" -ForegroundColor Green
-
