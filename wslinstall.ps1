@@ -12,8 +12,8 @@ $pwsh7path = "C:\Program Files\PowerShell\7"
 $pwsh7path32 = "C:\Program Files (x86)\PowerShell\7"
 
 if (Test-path $pwsh7path -or Test-Path $pwsh7path32) {
-write-host "powershell7 install found, trying to upgrade"
-winget upgrade --id Microsoft.Powershell -e --silent --verbose --accept-source-agreements --accept-package-agreements --include-unknown
+$PSVersionTable.PSVersion.ToString()
+if 
 }
 else {
 write-host "no powershell7 install found, installing..."
