@@ -1,5 +1,9 @@
-$date = get-date -format "ddddMM/dd/yyyyHH:mm"
-$logpath = "$env:USERPROFILE\desktop\doomsetup'$date'.log"
+$dateforfile = get-date -format "ddMMyyyyHHmm"
+$logpath = "$env:USERPROFILE\desktop\doomsetup${dateforfile}.log"
+#$logpath
+
+Start-transcript -path $logpath
+
 Unregister-ScheduledTask -TaskName "doomsetup" -Confirm:$false
 #remove task
 
@@ -40,3 +44,7 @@ wsl -d Ubuntu -u root bash $wslPath
 Remove-Item $pathofscript
 Start-Sleep -Seconds 3
 Write-Host "done???" -ForegroundColor Green
+
+start-sleep -seconds 2
+
+stop-transcript
