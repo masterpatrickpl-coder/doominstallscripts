@@ -15,7 +15,7 @@ wsl --install -d Ubuntu --no-launch
 invoke-webrequest -uri "https://raw.githubusercontent.com/masterpatrickpl-coder/doominstallscripts/refs/heads/main/doomsetup.ps1" -OutFile "$env:USERPROFILE\desktop\doomsetup.ps1"
 
 $part2Path = "$env:USERPROFILE\desktop\doomsetup.ps1"
-$taskaction = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-executionpolicy bypass -file `"$part2Path`""
+$taskaction = New-ScheduledTaskAction -Execute "pwsh.exe" -Argument "-executionpolicy bypass -file `"$part2Path`""
 $afterrestart = New-ScheduledTaskTrigger -AtLogOn
 $config = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries
 
