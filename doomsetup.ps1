@@ -1,3 +1,5 @@
+$date = get-date -format "ddddMM/dd/yyyyHH:mm"
+$logpath = "$env:USERPROFILE\desktop\doomsetup'$date'.log"
 Unregister-ScheduledTask -TaskName "doomsetup" -Confirm:$false
 #remove task
 
