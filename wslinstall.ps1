@@ -8,14 +8,14 @@ Start-Sleep -seconds 60
 
 #winget install --id Git.Git -e --source winget --accept-package-agreements --accept-source-agreements
 
-$getpwshversion = pwsh -command '$PSVersionTable.PSVersion.ToString()'
 
 $pwsh7path = "C:\Program Files\PowerShell\7"
 $pwsh7path32 = "C:\Program Files (x86)\PowerShell\7"
 
-if (Test-path $pwsh7path -or Test-Path $pwsh7path32) {
+if ((Test-path $pwsh7path) -or (Test-Path $pwsh7path32)) {
+$getpwshversion = pwsh -command '$PSVersionTable.PSVersion.ToString()'
 if ($getpwshversion -ne "7.6.2") {
-write-host "powershell7 install found but not latest, upgrading" -ForegroundColor Orange
+write-host "powershell7 install found but not latest, upgrading" -ForegroundColor Yellow
 winget upgrade --id Microsoft.Powershell --silent --verbose --accept-source-agreements --accept-package-agreements --include-unknown
 } 
 else {
@@ -23,7 +23,7 @@ write-host "powershell okay" -ForegroundColor Green
 }
 }
 else {
-write-host "no powershell7 install found, installing..." -ForegroundColor Orange
+write-host "no powershell7 install found, installing..." -ForegroundColor Yellow
 winget install --id Microsoft.Powershell --silent --verbose --accept-source-agreements --accept-package-agreements --include-unknown
 }
 
