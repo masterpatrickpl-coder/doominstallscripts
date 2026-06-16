@@ -41,7 +41,7 @@ $wslPath = "/mnt/" + ($pathofscript -replace "\\", "/" -replace ":", "").ToLower
 
 wsl -d Ubuntu -u root bash $wslPath
 
-Remove-Item $pathofscript
+#Remove-Item $pathofscript
 Start-Sleep -Seconds 3
 Write-Host "done???" -ForegroundColor Green
 
