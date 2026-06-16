@@ -3,8 +3,8 @@ $logpath = "$env:USERPROFILE\desktop\wslinstall${dateforfile}.log"
 
 start-transcript -path $logpath
 
-Write-host "this will restart you machine, make sure to save all your work before proceeding, you have 60 seconds" -ForegroundColor Red  
-Start-Sleep -seconds 60
+Write-host "this will restart you machine, make sure to save all your work before proceeding, you have 20 seconds" -ForegroundColor Red  
+Start-Sleep -seconds 20
 
 #winget install --id Git.Git -e --source winget --accept-package-agreements --accept-source-agreements
 winget install --id Microsoft.WSL --source winget --accept-package-agreements --accept-source-agreements
