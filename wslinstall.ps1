@@ -1,3 +1,8 @@
+$dateforfile = get-date -format "ddMMyyyyHHmm"
+$logpath = "$env:USERPROFILE\desktop\wslinstall${dateforfile}.log"
+
+start-transcript -path $logpath
+
 Write-host "this will restart you machine, make sure to save all your work before proceeding, you have 60 seconds" -ForegroundColor Red  
 Start-Sleep -seconds 60
 
@@ -22,5 +27,9 @@ Register-ScheduledTask -TaskName "doomsetup" -Action $taskaction -Trigger $after
 
 Write-host "restarting..."  
 Start-Sleep -Seconds 5
+
+Stop-transcript
+
+Start-sleep -seconds 7
 
 Restart-Computer -Force
