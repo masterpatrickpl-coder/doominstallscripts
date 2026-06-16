@@ -7,7 +7,7 @@ Write-host "this will restart you machine, make sure to save all your work befor
 Start-Sleep -seconds 60
 
 #winget install --id Git.Git -e --source winget --accept-package-agreements --accept-source-agreements
-
+winget install --id Microsoft.WSL --source winget --accept-package-agreements --accept-source-agreements
 
 $pwsh7path = "C:\Program Files\PowerShell\7"
 $pwsh7path32 = "C:\Program Files (x86)\PowerShell\7"
