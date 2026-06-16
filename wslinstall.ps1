@@ -7,9 +7,6 @@ winget install --id Git.Git -e --source winget --accept-package-agreements --acc
 wsl --install --no-distribution
 wsl --install -d Ubuntu --no-launch
 
-#hopefully work with multipule lines?
-#new-item -Path "$env:USERPROFILE\desktop\doomsetup.ps1" -value
-# 
 #not needed, just download it instead
 
 invoke-webrequest -uri "https://raw.githubusercontent.com/masterpatrickpl-coder/doominstallscripts/refs/heads/main/doomsetup.ps1" -OutFile "$env:USERPROFILE\desktop\doomsetup.ps1"
@@ -21,8 +18,8 @@ $config = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries
 
 Register-ScheduledTask -TaskName "doomsetup" -Action $taskaction -Trigger $afterrestart -RunLevel Highest -Settings $config -Force
 
-#why the fk can we not pipe into start-sleep?
-#Write-host "restarting..." | Start-Sleep -Seconds 5
+#wait some time
+
 Write-host "restarting..."  
 Start-Sleep -Seconds 5
 
