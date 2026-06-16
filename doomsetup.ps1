@@ -4,7 +4,7 @@ $logpath = "$env:USERPROFILE\desktop\doomsetup${dateforfile}.log"
 
 Start-transcript -path $logpath
 
-Unregister-ScheduledTask -TaskName "doomsetup" -Confirm:$false
+Unregister-ScheduledTask -TaskName "doomsetup" -Confirm:$false -erroraction silentlycontinue
 #remove task
 
 $pathofscript = "$env:TEMP\doomsetupcontinue.sh"
