@@ -7,6 +7,17 @@ Start-transcript -path $logpath
 Unregister-ScheduledTask -TaskName "doomsetup" -Confirm:$false -erroraction silentlycontinue
 #remove task
 
+$wslcheckubuntu = wsl --list --quiet
+
+write-warning "testing if ubuntu is installed"
+if ($wslcheckubuntu -notcontains "Ubuntu") {
+start-sleep -seconds 2
+wsl --install -d Ubuntu
+}
+else {
+write-host "ubuntu okay" -ForegroundColor Green
+}
+
 $pathofscript = "$env:TEMP\doomsetupcontinue.sh"
 
 Start-Sleep -Seconds 3
