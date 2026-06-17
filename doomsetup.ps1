@@ -7,6 +7,17 @@ Start-transcript -path $logpath
 Unregister-ScheduledTask -TaskName "doomsetup" -Confirm:$false -erroraction silentlycontinue
 #remove task
 
+$wslcheckubuntu = wsl --list --quiet
+
+write-warning "testing if ubuntu is installed"
+if ($wslcheckubuntu -notcontains "Ubuntu") {
+start-sleep -seconds 2
+wsl --install -d Ubuntu
+}
+else {
+write-host "ubuntu okay" -ForegroundColor Green
+}
+
 $pathofscript = "$env:TEMP\doomsetupcontinue.sh"
 
 Start-Sleep -Seconds 3
@@ -31,7 +42,7 @@ sed -i 's/-lnsl //' Makefile
 make
 apt install doom-wad-shareware -y
 cp /usr/share/games/doom/doom1.wad ~/DOOM/linuxdoom-1.10/
-Xephyr :2 -ac -screen 640x480x8 &
+Xephyr :2 -ac -screen 640x400x8 -fullscreen &
 sleep 2
 DISPLAY=:2 ./linux/linuxxdoom -nosound
 '@
