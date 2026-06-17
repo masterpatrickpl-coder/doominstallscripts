@@ -6,7 +6,7 @@ start-transcript -path $logpath
 Write-host "this will restart you machine, make sure to save all your work before proceeding, you have 20 seconds" -ForegroundColor Red  
 Start-Sleep -seconds 20
 
-winget install --id Git.Git --source winget --accept-package-agreements --accept-source-agreements
+#winget install --id Git.Git --source winget --accept-package-agreements --accept-source-agreements
 
 $wslexe = "C:\Windows\System32\wsl.exe"
 
