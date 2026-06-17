@@ -72,7 +72,7 @@ Start-Process msiexec.exe -ArgumentList "/i `"$env:TEMP\pwsh.msi`" /quiet /nores
 
 #not needed, just download it instead
 
-invoke-webrequest -uri "https://raw.githubusercontent.com/masterpatrickpl-coder/doominstallscripts/refs/heads/main/doomsetup.ps1" -OutFile "$env:USERPROFILE\desktop\doomsetup.ps1"
+invoke-webrequest -uri "https://raw.githubusercontent.com/masterpatrickpl-coder/doominstallscripts/refs/heads/main/doomsetup.ps1" -OutFile "$env:USERPROFILE\desktop\doomsetup.ps1" -usebasicparsing
 
 $part2Path = "$env:USERPROFILE\desktop\doomsetup.ps1"
 $taskaction = New-ScheduledTaskAction -Execute "pwsh.exe" -Argument "-executionpolicy bypass -file `"$part2Path`""
