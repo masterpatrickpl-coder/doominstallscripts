@@ -47,7 +47,7 @@ write-host "powershell7 install found but not latest, upgrading" -ForegroundColo
 winget upgrade --id Microsoft.Powershell --silent --verbose --accept-source-agreements --accept-package-agreements --include-unknown
 }
 else {
-Invoke-WebRequest -Uri "https://github.com/PowerShell/PowerShell/releases/download/v7.6.2/PowerShell-7.6.2-win-x64.msi" -OutFile "$env:TEMP\pwsh.msi" -UseBasicParsing
+Invoke-WebRequest -Uri "https://github.com/PowerShell/PowerShell/releases/download/v7.6.3/PowerShell-7.6.3-win-x64.msi" -OutFile "$env:TEMP\pwsh.msi" -UseBasicParsing
 Start-Process msiexec.exe -ArgumentList "/i `"$env:TEMP\pwsh.msi`" /quiet /norestart" -Wait
 }
 } 
@@ -61,7 +61,7 @@ write-host "no powershell7 install found, installing..." -ForegroundColor Yellow
 winget install --id Microsoft.Powershell --silent --verbose --accept-source-agreements --accept-package-agreements --include-unknown
 }
 else {
-Invoke-WebRequest -Uri "https://github.com/PowerShell/PowerShell/releases/download/v7.6.2/PowerShell-7.6.2-win-x64.msi" -OutFile "$env:TEMP\pwsh.msi" -UseBasicParsing
+Invoke-WebRequest -Uri "https://github.com/PowerShell/PowerShell/releases/download/v7.6.3/PowerShell-7.6.3-win-x64.msi" -OutFile "$env:TEMP\pwsh.msi" -UseBasicParsing
 Start-Process msiexec.exe -ArgumentList "/i `"$env:TEMP\pwsh.msi`" /quiet /norestart" -Wait
 }
 }
