@@ -1,3 +1,4 @@
+#pwsh version 7.6.3
 $dateforfile = get-date -format "ddMMyyyyHHmm"
 $logpath = "$env:USERPROFILE\desktop\wslinstall${dateforfile}.log"
 
