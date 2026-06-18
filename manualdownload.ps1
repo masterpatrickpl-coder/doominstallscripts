@@ -1,4 +1,4 @@
-invoke-webrequest -uri "https://raw.githubusercontent.com/masterpatrickpl-coder/doominstallscripts/refs/heads/main/wslinstall.ps1" -OutFile "$env:USERPROFILE\desktop\wslinstall.ps1"
+invoke-webrequest -uri "https://raw.githubusercontent.com/masterpatrickpl-coder/doominstallscripts/refs/heads/main/wslinstall.ps1" -UseBasicParsing -OutFile "$env:USERPROFILE\desktop\wslinstall.ps1"
 
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
