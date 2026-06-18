@@ -3,7 +3,7 @@ invoke-webrequest -uri "https://raw.githubusercontent.com/masterpatrickpl-coder/
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 
-Invoke-WebRequest -Uri "https://github.com/PowerShell/PowerShell/releases/download/v7.6.2/PowerShell-7.6.2-win-x64.msi" -OutFile "$env:TEMP\pwsh.msi" -UseBasicParsing
+Invoke-WebRequest -Uri "https://github.com/PowerShell/PowerShell/releases/download/v7.6.3/PowerShell-7.6.3-win-x64.msi" -OutFile "$env:TEMP\pwsh.msi" -UseBasicParsing
 Start-Process msiexec.exe -ArgumentList "/i `"$env:TEMP\pwsh.msi`" /quiet /norestart" -Wait
 
 
