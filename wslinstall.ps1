@@ -42,13 +42,13 @@ $pwsh7path32 = "C:\Program Files (x86)\PowerShell\7"
 
 if ((Test-path $pwsh7path) -or (Test-Path $pwsh7path32)) {
 $getpwshversion = pwsh -command '$PSVersionTable.PSVersion.ToString()'
-if ($getpwshversion -ne "7.6.3") {
+if ($getpwshversion -ne "7.6.5") {
 if (get-command "winget" -erroraction silentlycontinue) {
 write-host "powershell7 install found but not latest, upgrading" -ForegroundColor Yellow
 winget upgrade --id Microsoft.Powershell --silent --verbose --accept-source-agreements --accept-package-agreements --include-unknown
 }
 else {
-Invoke-WebRequest -Uri "https://github.com/PowerShell/PowerShell/releases/download/v7.6.3/PowerShell-7.6.3-win-x64.msi" -OutFile "$env:TEMP\pwsh.msi" -UseBasicParsing
+Invoke-WebRequest -Uri "https://github.com/PowerShell/PowerShell/releases/download/v7.6.5/PowerShell-7.6.5-win-x64.msi" -OutFile "$env:TEMP\pwsh.msi" -UseBasicParsing
 Start-Process msiexec.exe -ArgumentList "/i `"$env:TEMP\pwsh.msi`" /quiet /norestart" -Wait
 }
 } 
